@@ -1,0 +1,110 @@
+<div class="container">
+
+
+    <div class="row main-row">
+        <div class="col-md-4 left">
+
+            <h2>Login</h2>
+            <input type="text" placeholder="Användarnamn" class=" form-control credentials">
+            <input type="text" placeholder="Lösenord" class=" form-control credentials">
+        </div>
+        <div class="col-md-4 middle">
+            <div class="row content-row">
+                <div class="col-md-5 inner-left top">
+                    <!-- <div class="infoBox ">
+                <span class="glyphicon glyphicon-exclamation-sign pull-left " aria-hidden="true "></span> För att lägga till en ny planta i system så måste du gå igenom varje rubrik och fylla i den data som du kan tillhandahålla.
+            </div> -->
+
+                    <div class="box-title-nav">
+                        <li (click)="toggleFields('sowFields')">Plantering</li>
+                        <li (click)="toggleFields('careFields')">Skötsel</li>
+                        <li (click)="toggleFields('fertFields')">Gödning</li>
+                        <li (click)="toggleFields('otherFields')">Övrigt</li>
+                    </div>
+
+                    <div class="form-group ">
+
+                        <div *ngIf="sowFieldsVis">
+                            <input type="text " (keyup)="onKey($event, 'sow', 'name')" placeholder="Namn" class=" form-control" #plantName>
+                            <input class="form-control " (change)="onChange($event, 'sow', 'startDate')" placeholder="Startdatum" type="date" value="{{currentDate}}" #plantStartDate>
+                            <input class="form-control " (change)="onChange($event, 'sow', 'endDate') " type="date" placeholder="Slutdatum" value="{{currentDate}}" #plantEndDate>
+                        </div>
+
+                        <div *ngIf="careFieldsVis">
+                            <textarea class="form-control " (keyup)="onKey($event, 'care', 'comment')" placeholder="Kommentar" value=" " rows="5 " #careComment></textarea>
+                        </div>
+
+                        <div *ngIf="fertFieldsVis">
+                            <input type="text " (keyup)="onKey($event, 'fertilizer', 'name')" placeholder="Namn" class="form-control " #fertName>
+                            <input class="form-control " (change)="onChange($event, 'fertilizer', 'startDate')" placeholder="Startdatum" type="date" value="{{currentDate}} " #fertStartDate>
+                            <input class="form-control " (change)="onChange($event, 'fertilizer', 'endDate') " type="date" placeholder="Slutdatum" value="{{currentDate}} " #fertEndDate>
+                        </div>
+
+                        <div *ngIf="otherFieldVis">
+                            <p> <textarea class="form-control " (keyup)="onKey($event, 'other', 'comment') " value="" placeholder="Kommentar" rows="5 " #careComment></textarea></p>
+
+                            <textarea class="form-control " (keyup)="onKey($event, 'other', 'tags') " value=" " placeholder="Taggar" rows="1 " #careComment></textarea>
+                            <p><button class="btn btn-primary" (click)="postPlant() ">Skicka</button></p>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-5 inner-right">
+                    <div class="box-title">
+                        Summering
+                    </div>
+                    <div class="row summary-row">
+                        <div class="col-xs-3">
+                            <h3>Plantering</h3>
+                            <p>Planta: {{summary.sow.name}}</p>
+                            <p>Såddes: {{summary.sow.startDate}}</p>
+                            <p>Färdiga att skördas: {{summary.sow.endDate}}</p>
+                        </div>
+                        <div class="col-xs-3 summaryRight">
+                            <h3>Skötsel</h3>
+                            <p>Kommentar: {{summary.care.comment}}</p>
+                        </div>
+                    </div>
+                    <div class="row summary-row">
+                        <div class="col-xs-3">
+                            <h3>Gödning</h3>
+                            <p>Gödsel: {{summary.fertilizer.name}}</p>
+                            <p>Började: {{summary.fertilizer.startDate}}</p>
+                            <p>Slutade: {{summary.fertilizer.endDate}}</p>
+                        </div>
+                        <div class="col-xs-3 summaryRight">
+                            <h3>Övrigt</h3>
+                            <p>Kommentar: {{summary.other.comment}}</p>
+                            <p>Tags: {{summary.other.tags}}</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row ">
+                <div class="col-md-5 inner-left control-panel">
+                    <div class="box-title">
+                        Kontrollpanel
+                    </div>
+                    <div class="row ctrl-row">
+                        <div class="col-md-6 ctrl-left">
+                            <div class="input-group search-bar">
+                                <input type="text" class="form-control" placeholder="Search for...">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">Go!</button>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-6 ctrl-right">Test</div>
+                    </div>
+
+
+
+
+
+                </div>
+
+            </div>
+
+
+        </div>

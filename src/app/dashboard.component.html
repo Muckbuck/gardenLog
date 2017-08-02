@@ -1,0 +1,11 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-5">
+            <div class="form-group">
+                <h3>Sök efter planta</h3>
+                <input class="form-control" (change)="onChange($event, 'sow', 'startDate')" type="text" value="{{currentDate}}" #plantStartDate>
+                <input type="submit" class="btn btn-primary" value="sök">
+            </div>
+        </div>
+    </div>
+</div>
